@@ -3,19 +3,19 @@
 // (2) Read an existing file containing a list of integers (one integer per line), sort it and store the sorted array in another file.
 
 import java.io.File;
+import java.io.FileWriter;
 import java.util.Random;
+import java.util.Scanner;
 
 public class Main {
 	// The main function will handle a user's keyboard input specified in the next session
-	// --rand length file
-	// --read file1 -> file2
 	public static void main(String[] args) {
 		switch (args.length) {
 			case 0: System.out.println("0 parameters entered, exiting");
 				break;
 			case 3: programMode(args);
 				break;
-			default: System.out.println("Incorrect input, exiting");
+			default: System.out.println("Incorrect number of parameters, exiting");
 				break;
 		}
 	}
@@ -45,34 +45,94 @@ public class Main {
 	public static void writeArrayToFile(int[] array, String filename) {
 		File newFile = new File(filename);
 
+		// create file
 		try {
 			newFile.createNewFile();
 		} catch (Exception e) {
 			System.out.println("File couldnt be created");
 		}
+
+		//write to file
+		try {
+			FileWriter writer = new FileWriter(filename);
+
+			for (int i = 0; i < array.length; i++) {
+				if (i == array.length - 1) {
+					writer.write(Integer.toString(array[i]));
+				} else if (i < array.length) {
+					writer.write(Integer.toString(array[i]) + "\n");
+				}
+			}
+
+			writer.close();
+			System.out.println("Written to file " + filename);
+		} catch (Exception e) {
+			System.out.println("Error writing to file.");
+		}
 	}
 	// This is the reverse of writeArrayToFile; Given the filename, read the integers (one line per integer) to an array, and return the array
 	public static int[] readFileToArray(String filename) {
-		int[] a = {};
-		return a;
+		try {
+			File fileToRead = new File(filename);
+			Scanner reader = new Scanner(fileToRead);
+
+			// finds file length
+			int fileLength = 0;
+			while (reader.hasNextLine()) {
+				fileLength++;
+				reader.nextLine();
+			}
+			reader.close();
+
+			Scanner reader2 = new Scanner(fileToRead);
+			int[] array = new int[fileLength];
+			for (int i = 0; i < fileLength; i++) {
+				array[i] = reader2.nextInt();
+
+				System.out.println(array[i]);
+			}
+			reader2.close();
+			return array;
+		} catch (Exception e) {
+			int[] a = {};
+			return a;
+		}
 	}
 	// Given an integer array, sort it in-place, i.e., the order of the elements will be changed so that the final array is in sorted order.
 	public static void bubbleSort(int[] array) {
+		for (int i = 0; i < array.length; i++) {
+			for (int j = i; j < array.length - 1; j++) {
+				if (array[j] > array[j + 1]) {
+					int temp = array[j + 1];
+					
+					array[j + 1] = array[j];
+					array[j] = temp;
+				}
+			}
+		}
 
+		for (int i = 0; i < array.length; i++) {
+			System.out.println(array[i]);
+		}
 	}
 
 
-	// first 
+	// first requirment
 	public static void storeRandomArr(String[] args) {
 		int length = Integer.parseInt(args[1]);
-		String fileLocation = args[2];
+		String fileName = args[2];
 
-		int[] randomArr = createRandomArray(length);
-		writeArrayToFile(randomArr, fileLocation);
+		int[] randomArray = createRandomArray(length);
+		writeArrayToFile(randomArray, fileName);
 	}
-	// second
+	// second requirment
 	public static void readFileAndSort(String[] args) {
+		String fileName1 = args[1];
+		String fileName2 = args[2];
 
+		int[] array = readFileToArray(fileName1);
+		bubbleSort(array);
+		writeArrayToFile(array, fileName2);
 	}
 
 	
