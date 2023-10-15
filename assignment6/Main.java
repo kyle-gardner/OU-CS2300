@@ -83,7 +83,7 @@ public class Main {
 				reader.nextLine();
 			}
 			reader.close();
-
+			// reads file to array
 			Scanner reader2 = new Scanner(fileToRead);
 			int[] array = new int[fileLength];
 			for (int i = 0; i < fileLength; i++) {
@@ -92,8 +92,10 @@ public class Main {
 				System.out.println(array[i]);
 			}
 			reader2.close();
+
 			return array;
 		} catch (Exception e) {
+			System.out.println("Error reading file into array,");
 			int[] a = {};
 			return a;
 		}
@@ -101,7 +103,7 @@ public class Main {
 	// Given an integer array, sort it in-place, i.e., the order of the elements will be changed so that the final array is in sorted order.
 	public static void bubbleSort(int[] array) {
 		for (int i = 0; i < array.length; i++) {
-			for (int j = i; j < array.length - 1; j++) {
+			for (int j = 0; j < array.length - 1; j++) {
 				if (array[j] > array[j + 1]) {
 					int temp = array[j + 1];
 					
@@ -110,14 +112,8 @@ public class Main {
 				}
 			}
 		}
-
-		for (int i = 0; i < array.length; i++) {
-			System.out.println(array[i]);
-		}
 	}
-
-
-	// first requirment
+	// first requirement
 	public static void storeRandomArr(String[] args) {
 		int length = Integer.parseInt(args[1]);
 		String fileName = args[2];
@@ -125,7 +121,7 @@ public class Main {
 		int[] randomArray = createRandomArray(length);
 		writeArrayToFile(randomArray, fileName);
 	}
-	// second requirment
+	// second requirement
 	public static void readFileAndSort(String[] args) {
 		String fileName1 = args[1];
 		String fileName2 = args[2];
@@ -134,6 +130,4 @@ public class Main {
 		bubbleSort(array);
 		writeArrayToFile(array, fileName2);
 	}
-
-	
 }
