@@ -37,7 +37,6 @@ public class Main {
 
 		for (int i = 0; i < arrayLength; i++) {
 			randArray[i] = randGen.nextInt(100);
-			System.out.println(randArray[i]);
 		}
 		return randArray;
 	}
@@ -88,8 +87,6 @@ public class Main {
 			int[] array = new int[fileLength];
 			for (int i = 0; i < fileLength; i++) {
 				array[i] = reader2.nextInt();
-
-				System.out.println(array[i]);
 			}
 			reader2.close();
 
