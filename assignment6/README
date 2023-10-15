@@ -1,0 +1,16 @@
+run with java -jar assignment6.jar {args}
+
+args:
+	--rand {length} {filepath}
+	--read {filepath 1} {filepath 2}
+
+rand flag:
+	creates an array with random entries of length {length} and saves it to {filepath}
+read flag:
+	reads the array at {filepath 1} and writes it to {filepath 2}
+
+example usage:
+	java -jar assignment6.jar --rand 50 ./filename
+		creates a random array of length and saves it to the file filename
+	java -jar assignment6.jar --read ./array1 ./sortedArray
+		reads the array saved in the file array1, sorts it, and saves it to the file sortedArray

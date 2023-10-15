@@ -2,6 +2,7 @@
 // (1) Generate an array of random integers and store it in a file
 // (2) Read an existing file containing a list of integers (one integer per line), sort it and store the sorted array in another file.
 
+import java.io.File;
 import java.util.Random;
 
 public class Main {
@@ -42,7 +43,13 @@ public class Main {
 	}
 	// Given an integer array and filename, write the array to the file, with each line containing one integer in the array.
 	public static void writeArrayToFile(int[] array, String filename) {
-		
+		File newFile = new File(filename);
+
+		try {
+			newFile.createNewFile();
+		} catch (Exception e) {
+			System.out.println("File couldnt be created");
+		}
 	}
 	// This is the reverse of writeArrayToFile; Given the filename, read the integers (one line per integer) to an array, and return the array
 	public static int[] readFileToArray(String filename) {
