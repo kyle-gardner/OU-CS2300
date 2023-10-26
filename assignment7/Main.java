@@ -8,6 +8,7 @@ public class Main {
 		ArrayList<Integer> array1 = makeArray(1000);
 		ArrayList<Integer> array2 = makeArray(10);
 
+		mergeSort(array1, 0, array1.size());
 		bubbleSort(array2);
 	}
 
@@ -15,7 +16,7 @@ public class Main {
 		ArrayList<Integer> array = new ArrayList<>();
 		Random random = new Random();
 
-		for (int i = 0; i < length; i++) {
+		for (int i = 0; i <= length; i++) {
 			int x = random.nextInt(1000);
 			Integer integer = Integer.valueOf(x);
 
@@ -25,8 +26,14 @@ public class Main {
 		return array;
 	}
 
-	public static ArrayList<Integer> mergeSort(ArrayList<Integer> array) {
+	public static ArrayList<Integer> mergeSort(ArrayList<Integer> array, int i, int j) {
+		int middle = (i + (j-1) ) / 2;
+		// first half
+		System.out.println(middle);
 		return array;
+	}
+	public static void merge() {
+
 	}
 
 	public static ArrayList<Integer> bubbleSort(ArrayList<Integer> array) {
