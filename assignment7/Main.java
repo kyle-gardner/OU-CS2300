@@ -24,7 +24,7 @@ public class Main {
 		bubbleSort(array2);
 		long time4 = System.nanoTime();
 		System.out.println("Time for bubblesort: " + ((time4-time3)));
-		
+
 //		System.out.println("Sorted array1");
 //		System.out.println(array1);
 //		System.out.println("Sorted array2");
