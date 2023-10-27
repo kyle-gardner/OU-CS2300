@@ -6,10 +6,29 @@ import java.util.Random;
 public class Main {
 	public static void main(String[] args) {
 		ArrayList<Integer> array1 = makeArray(1000);
-		ArrayList<Integer> array2 = makeArray(10);
+		ArrayList<Integer> array2 = makeArray(1000);
 
-		mergeSort(array1, 0, array1.size());
+//		System.out.println("Unsorted array1");
+//		System.out.println(array1);
+
+//		System.out.println("Unsorted array2");
+//		System.out.println(array2);
+
+		long time1 = System.nanoTime();
+		mergeSort(array1, 0, 10);
+		long time2 = System.nanoTime();
+		System.out.println("Time for mergesort: " + ((time2-time1)));
+
+
+		long time3 = System.nanoTime();
 		bubbleSort(array2);
+		long time4 = System.nanoTime();
+		System.out.println("Time for bubblesort: " + ((time4-time3)));
+		
+//		System.out.println("Sorted array1");
+//		System.out.println(array1);
+//		System.out.println("Sorted array2");
+//		System.out.println(array2);
 	}
 
 	public static ArrayList<Integer> makeArray(int length) {
@@ -27,13 +46,61 @@ public class Main {
 	}
 
 	public static ArrayList<Integer> mergeSort(ArrayList<Integer> array, int i, int j) {
-		int middle = (i + (j-1) ) / 2;
-		// first half
-		System.out.println(middle);
+		if (i < j) {
+			int middle = (i + (j-1)) / 2;
+
+			//first half
+			var first = mergeSort(array, i, middle);
+			//second half
+			var second = mergeSort(array, middle + 1, j);
+			
+			return merge(first, second);
+		}
 		return array;
 	}
-	public static void merge() {
+	public static ArrayList<Integer> merge(ArrayList<Integer> first, ArrayList<Integer> second) {
+		ArrayList<Integer> array = new ArrayList<>();
 
+		for (int i = 0; i < first.size(); i++) {
+			for (int j = 0; j < first.size() - 1; j++) {
+				if (first.get(j) > first.get(j + 1)) {
+					Integer temp = first.get(j + 1);
+
+					first.set(j + 1, first.get(j));
+					first.set(j, temp);
+				}
+			}
+		}
+		for (int i = 0; i < second.size(); i++) {
+			for (int j = 0; j < second.size() - 1; j++) {
+				if (second.get(j) > second.get(j + 1)) {
+					Integer temp = second.get(j + 1);
+
+					second.set(j + 1, second.get(j));
+					second.set(j, temp);
+				}
+			}
+		}
+		int i = 0;
+		int j = 0;
+		while (i < first.size() && j < second.size()) {
+			if (first.get(i) < second.get(i)) {
+				array.add(first.get(i)); 
+				i++;
+			} else {
+				array.add(second.get(j));
+				j++;
+			}
+		}
+		while (i < first.size()) {
+			array.add(i);
+			i++;
+		}
+		while (j < second.size()) {
+			array.add(second.get(j));
+			j++;
+		}
+		return array;
 	}
 
 	public static ArrayList<Integer> bubbleSort(ArrayList<Integer> array) {
