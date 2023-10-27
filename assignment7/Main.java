@@ -61,26 +61,7 @@ public class Main {
 	public static ArrayList<Integer> merge(ArrayList<Integer> first, ArrayList<Integer> second) {
 		ArrayList<Integer> array = new ArrayList<>();
 
-		for (int i = 0; i < first.size(); i++) {
-			for (int j = 0; j < first.size() - 1; j++) {
-				if (first.get(j) > first.get(j + 1)) {
-					Integer temp = first.get(j + 1);
 
-					first.set(j + 1, first.get(j));
-					first.set(j, temp);
-				}
-			}
-		}
-		for (int i = 0; i < second.size(); i++) {
-			for (int j = 0; j < second.size() - 1; j++) {
-				if (second.get(j) > second.get(j + 1)) {
-					Integer temp = second.get(j + 1);
-
-					second.set(j + 1, second.get(j));
-					second.set(j, temp);
-				}
-			}
-		}
 		int i = 0;
 		int j = 0;
 		while (i < first.size() && j < second.size()) {
