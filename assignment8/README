@@ -1,0 +1,8 @@
+can call the program with 
+java -jar assignment8.jar {arg}
+
+arg is just the Nth fibonacci number you want 
+for example 
+
+java -jar assignment8.jar 10 
+will give you the 10th fib number, 55
