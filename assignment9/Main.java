@@ -1,14 +1,24 @@
 import java.util.ArrayList;
-import java.util.Collection;
 import java.util.Random;
 
 public class Main {
 	public static void main(String[] args) {
-		ArrayList<Integer> arr = makeArray(100);
+		ArrayList<Integer> arr1 = makeArray(Integer.parseInt(args[0]));
+		ArrayList<Integer> arr2 = makeArray(Integer.parseInt(args[0]));
 
-		var sorter = new Sorter<>(arr);
+		Sorter<Integer> mergeSorter = new Sorter<>(arr1);
+		Sorter<Integer> bubSorter = new Sorter<>(arr2);
+		
+		System.out.println("unsorted");
+		System.out.println(arr1);
+		mergeSorter.mergeSort();
+		mergeSorter.displayObj();
+
+		System.out.println(arr2);
+		bubSorter.bubbleSort();
+		bubSorter.displayObj();
 	}
-		public static ArrayList<Integer> makeArray(int length) {
+	public static ArrayList<Integer> makeArray(int length) {
 		ArrayList<Integer> array = new ArrayList<>();
 		Random random = new Random();
 
@@ -23,21 +33,34 @@ public class Main {
 	}
 }
 
-class Sorter <T extends Collection<? extends Comparable>> {
-	T obj;
+class Sorter <T extends Comparable<T>> {
+	ArrayList<T> newArr;
 
-	public Sorter(T obj) {
-		this.obj = obj;
+	public Sorter(ArrayList<T> obj) {
+		this.newArr = obj;
 	}
 
 	public void displayObj() {
-		System.out.println(obj);
+		System.out.println(newArr);
 	}
 
-	public T  bubbleSort() {
-		return obj;
+	public void bubbleSort() {
+		for (int i = 0; i < newArr.size() - 1; i++) {
+			for (int j = 0; j < newArr.size() - 1; j++) {
+				if (newArr.get(j).compareTo(newArr.get(j + 1)) > 0) {
+					T temp = newArr.get(j);
+
+					newArr.set(j, newArr.get(j + 1));
+					newArr.set(j + 1, temp);
+				}
+			}
+		}
 	}
-	public T mergeSort() {
-		return obj;
+	public void mergeSort() {
+		int middle = newArr.size();
+
+	}
+	private ArrayList<T> merge(int left, int right) {
+		return newArr;
 	}
 }
