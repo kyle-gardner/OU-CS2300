@@ -1,0 +1,10 @@
+run 
+java -jar assignment9.jar {arg}
+
+arg is a number, the length of the arrays you want to make (randomly)
+for example 
+java -jar assignment9.jar 10 
+creates two random size 10 arrays and bubblesorts and mergesorts them
+
+it then sorts it and prints them out. 
+it creates integer arraylists but the class is generic so should work with anything comparable
