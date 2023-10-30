@@ -62,7 +62,7 @@ class Sorter <T extends Comparable<T>> {
 	}
 	public void mergeSort(int left, int right) {
 		if (left < right) {
-			int middle = left + (right - 1) /2;
+			int middle = left + (right - left) /2;
 			//left side
 			mergeSort(left, middle);
 			//right side 
