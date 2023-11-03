@@ -1,0 +1,10 @@
+can run it with
+java -jar assignment10.jar {args}
+
+args is the password you want to authenticate
+
+example
+java -jar assignment10.jar r3213RR#37
+
+will give you 
+Password accepted
