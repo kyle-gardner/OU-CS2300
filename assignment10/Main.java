@@ -52,7 +52,7 @@ public class Main {
 		}
 	}
 	public static boolean checkLowerCase(String pass) {
-		Pattern pattern = Pattern.compile("a-z");
+		Pattern pattern = Pattern.compile("[a-z]");
 		Matcher matcher = pattern.matcher(pass);
 
 		if (matcher.find()) {
@@ -62,7 +62,7 @@ public class Main {
 		}
 	}
 	public static boolean checkUpperCase(String pass) {
-		Pattern pattern = Pattern.compile("A-Z");
+		Pattern pattern = Pattern.compile("[A-Z]");
 		Matcher matcher = pattern.matcher(pass);
 
 		if (matcher.find()) {
@@ -72,7 +72,7 @@ public class Main {
 		}
 	}
 		public static boolean checkNumbers(String pass) {
-		Pattern pattern = Pattern.compile("0-9");
+		Pattern pattern = Pattern.compile("[0-9]");
 		Matcher matcher = pattern.matcher(pass);
 
 		if (matcher.find()) {
