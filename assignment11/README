@@ -1,0 +1,12 @@
+run with 
+java -jar assignment11.jar {args}
+
+args is the path to the file you want it to read the words from
+
+for example 
+java -jar assignment11.jar ./test.txt
+
+will output
+banana 2
+poop 5
+watermelon 4
