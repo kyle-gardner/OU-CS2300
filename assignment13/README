@@ -1,0 +1,13 @@
+How to run
+java -jar .\target\convertgui-1.0-SNAPSHOT-shaded.jar
+
+or if you have the maven plugin installed you can 
+ctrl+P -> Maven: execute commands -> custom -> javafx:run
+
+or if you have maven installed you can do 
+mvn clean javafx:run
+
+if you cant get it to run i can submit a video of it working if needed
+
+Input a number and select a conversion from the ChoiceBox and hit enter
+your converted number will show up below it.
