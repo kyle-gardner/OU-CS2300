@@ -1,5 +1,5 @@
 How to run
-java -jar .\target\convertgui-1.0-SNAPSHOT-shaded.jar
+java -jar .\target\demo-1.0-SNAPSHOT-shaded.jar
 
 or if you have the maven plugin installed you can 
 ctrl+P -> Maven: execute commands -> custom -> javafx:run
